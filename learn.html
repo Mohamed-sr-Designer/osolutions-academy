@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Classroom — Osolutions Academy</title>
+<meta name="description" content="Lesson player, notes, resources, checkpoints and discussion.">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<meta name="apple-mobile-web-app-title" content="OSO Academy">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/motion.css">
+</head>
+<body>
+
+<header data-app-header></header>
+
+<main class="room">
+  <div class="room__main">
+    <nav class="crumbs" style="margin-bottom:1rem">
+      <a href="dashboard.html" data-i18n="nav.dashboard"></a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      <a data-back-link></a>
+    </nav>
+
+    <div class="stage" data-stage></div>
+
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:1.35rem">
+      <div style="min-width:0">
+        <div class="badge-row" style="margin-bottom:.6rem" data-lesson-badges></div>
+        <h1 style="font-size:clamp(1.35rem,2.6vw,1.9rem)" data-lesson-title></h1>
+      </div>
+      <button class="btn btn--primary btn--sm" data-done></button>
+    </div>
+
+    <div class="tabs" data-tabs></div>
+    <div data-tabpanes></div>
+
+    <div style="display:flex;justify-content:space-between;gap:1rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--line);flex-wrap:wrap">
+      <button class="btn btn--ghost btn--sm" data-prev></button>
+      <button class="btn btn--navy btn--sm" data-next></button>
+    </div>
+  </div>
+
+  <aside class="room__side">
+    <div style="display:flex;align-items:center;gap:.9rem;margin-bottom:1.1rem" data-room-progress></div>
+    <h4 style="margin-bottom:.7rem" data-i18n="room.contents"></h4>
+    <div data-toc></div>
+  </aside>
+</main>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/motion.js"></script>
+<script src="assets/js/seo.js"></script>
+<script src="assets/js/cro.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/learn.js"></script>
+</body>
+</html>

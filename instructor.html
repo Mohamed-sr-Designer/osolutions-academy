@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instructor studio — Osolutions Academy</title>
+<meta name="description" content="Cohorts, submissions, student progress and course health for Osolutions Academy instructors.">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<meta name="apple-mobile-web-app-title" content="OSO Academy">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/motion.css">
+</head>
+<body>
+
+<header data-app-header></header>
+
+<main class="shell shell--wide app">
+
+  <aside class="side">
+    <div class="card card--pad" style="padding:1.1rem">
+      <div class="side__who" data-who></div>
+      <nav class="side__nav" data-nav style="margin-top:1rem"></nav>
+    </div>
+    <div class="card card--pad" data-side-cta style="display:flex;flex-direction:column;gap:.75rem"></div>
+  </aside>
+
+  <div>
+    <!-- OVERVIEW -->
+    <section class="pane is-on" data-pane="overview">
+      <div class="pane__head">
+        <div><h2 data-i18n="ins.title"></h2><p data-i18n="ins.sub"></p></div>
+        <button class="btn btn--primary btn--sm" data-new>
+          <span data-i18n="ins.newCourse"></span>
+        </button>
+      </div>
+      <div class="kpis" data-ins-kpis></div>
+      <div class="cols">
+        <div class="card panel">
+          <div class="panel__head">
+            <h3 data-i18n="ins.watchTag"></h3>
+            <span class="mono" data-ins-funnel-course></span>
+          </div>
+          <div class="funnel" data-ins-funnel></div>
+          <div class="note-box" data-ins-funnel-note></div>
+        </div>
+        <div class="card panel">
+          <div class="panel__head">
+            <h3 data-i18n="ins.grading"></h3>
+            <button class="btn btn--quiet btn--sm" data-goto="grading" data-i18n="g.viewAll"></button>
+          </div>
+          <div data-ins-queue-preview></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSES -->
+    <section class="pane" data-pane="courses">
+      <div class="pane__head"><h2 data-i18n="ins.courses"></h2></div>
+      <div class="tbl-wrap"><table class="tbl" data-ins-courses></table></div>
+    </section>
+
+    <!-- STUDENTS -->
+    <section class="pane" data-pane="students">
+      <div class="pane__head"><h2 data-i18n="ins.students"></h2></div>
+      <div class="tbl-wrap"><table class="tbl" data-ins-students></table></div>
+    </section>
+
+    <!-- GRADING -->
+    <section class="pane" data-pane="grading">
+      <div class="pane__head"><h2 data-i18n="ins.grading"></h2></div>
+      <div style="display:grid;gap:1rem" data-ins-queue></div>
+    </section>
+
+    <!-- ANALYTICS -->
+    <section class="pane" data-pane="analytics">
+      <div class="pane__head"><h2 data-i18n="ins.analytics"></h2></div>
+      <div class="kpis" data-ins-kpis2></div>
+      <div class="card panel">
+        <div class="panel__head">
+          <h3 data-i18n="ins.watchTag"></h3>
+          <span class="mono" data-i18n="ins.watchP"></span>
+        </div>
+        <div class="funnel" data-ins-funnel2></div>
+      </div>
+      <div class="cols" style="margin-top:1rem">
+        <div class="card panel">
+          <div class="panel__head"><h3 data-i18n="ins.enrollment"></h3></div>
+          <div class="spark" data-ins-spark></div>
+          <div class="spark-x" data-ins-sparkx></div>
+        </div>
+        <div class="card panel">
+          <div class="panel__head"><h3 data-i18n="ins.rating"></h3></div>
+          <div data-ins-ratings></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANNOUNCEMENTS -->
+    <section class="pane" data-pane="announce">
+      <div class="pane__head"><h2 data-i18n="ins.announce"></h2></div>
+      <div class="card panel" style="margin-bottom:1rem">
+        <div class="field">
+          <textarea class="textarea" data-ann-input data-i18n-ph="ins.annPh"></textarea>
+        </div>
+        <div style="display:flex;justify-content:flex-end;margin-top:.8rem">
+          <button class="btn btn--primary btn--sm" data-ann-post data-i18n="ins.postAnn"></button>
+        </div>
+      </div>
+      <div style="display:grid;gap:.8rem" data-ins-announce></div>
+    </section>
+  </div>
+
+</main>
+
+<footer data-app-footer></footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/motion.js"></script>
+<script src="assets/js/seo.js"></script>
+<script src="assets/js/cro.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/instructor.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business console — Osolutions Academy</title>
+<meta name="description" content="Executive, finance, marketing and product views for Osolutions Academy: revenue, unit economics, acquisition channels and course health.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<meta name="apple-mobile-web-app-title" content="OSO Academy">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/motion.css">
+<link rel="stylesheet" href="assets/css/console.css">
+</head>
+<body>
+
+<header data-app-header></header>
+
+<main class="shell shell--wide app">
+
+  <aside class="side">
+    <div class="card card--pad" style="padding:1.1rem">
+      <div class="side__who" data-who></div>
+      <nav class="side__nav" data-nav style="margin-top:1rem"></nav>
+    </div>
+    <div class="card card--pad" style="display:flex;flex-direction:column;gap:.75rem" data-side-note></div>
+  </aside>
+
+  <div>
+    <!-- EXECUTIVE -->
+    <section class="pane is-on" data-pane="exec">
+      <div class="cnsl-head">
+        <div>
+          <h2 data-x-h></h2>
+          <p data-x-p></p>
+        </div>
+        <span class="demo-chip" data-demo-chip></span>
+      </div>
+      <div class="kpis" data-x-kpis></div>
+      <div class="cols" style="margin-top:1rem">
+        <div class="card panel">
+          <div class="panel__head"><h3 data-x-revH></h3><span class="mono" data-x-revSub></span></div>
+          <div data-x-revChart></div>
+          <div class="legend" data-x-revLegend></div>
+        </div>
+        <div class="card panel">
+          <div class="panel__head"><h3 data-x-mixH></h3></div>
+          <div class="donut" data-x-mix></div>
+        </div>
+      </div>
+      <div class="card panel" style="margin-top:1rem">
+        <div class="panel__head"><h3 data-x-watchH></h3><span class="mono" data-x-watchSub></span></div>
+        <div class="watch" data-x-watch></div>
+      </div>
+    </section>
+
+    <!-- FINANCE -->
+    <section class="pane" data-pane="fin">
+      <div class="cnsl-head">
+        <div><h2 data-f-h></h2><p data-f-p></p></div>
+        <span class="demo-chip" data-demo-chip></span>
+      </div>
+      <div class="kpis" data-f-kpis></div>
+      <div class="cols" style="margin-top:1rem">
+        <div class="card panel">
+          <div class="panel__head"><h3 data-f-plH></h3><span class="mono" data-f-plSub></span></div>
+          <div style="overflow-x:auto"><table class="pl" data-f-pl></table></div>
+        </div>
+        <div class="card panel">
+          <div class="panel__head"><h3 data-f-ueH></h3></div>
+          <div class="ue" data-f-ue></div>
+          <div class="note-box" data-f-ueNote></div>
+        </div>
+      </div>
+      <div class="card panel" style="margin-top:1rem">
+        <div class="panel__head"><h3 data-f-cashH></h3><span class="mono" data-f-cashSub></span></div>
+        <div data-f-cashChart></div>
+        <div class="legend" data-f-cashLegend></div>
+      </div>
+    </section>
+
+    <!-- MARKETING -->
+    <section class="pane" data-pane="mkt">
+      <div class="cnsl-head">
+        <div><h2 data-m-h></h2><p data-m-p></p></div>
+        <span class="demo-chip" data-demo-chip></span>
+      </div>
+      <div class="kpis" data-m-kpis></div>
+      <div class="cols" style="margin-top:1rem">
+        <div class="card panel">
+          <div class="panel__head"><h3 data-m-fnlH></h3><span class="mono" data-m-fnlSub></span></div>
+          <div class="fnl" data-m-fnl></div>
+        </div>
+        <div class="card panel">
+          <div class="panel__head"><h3 data-m-srcH></h3></div>
+          <div class="donut" data-m-src></div>
+        </div>
+      </div>
+      <div class="card panel" style="margin-top:1rem">
+        <div class="panel__head"><h3 data-m-chH></h3><span class="mono" data-m-chSub></span></div>
+        <div class="tbl-wrap" style="border:0"><table class="tbl roas" data-m-ch></table></div>
+      </div>
+    </section>
+
+    <!-- PRODUCT / UX -->
+    <section class="pane" data-pane="prod">
+      <div class="cnsl-head">
+        <div><h2 data-p-h></h2><p data-p-p></p></div>
+        <span class="demo-chip" data-demo-chip></span>
+      </div>
+      <div class="kpis" data-p-kpis></div>
+      <div class="card panel" style="margin-top:1rem">
+        <div class="panel__head"><h3 data-p-hlthH></h3><span class="mono" data-p-hlthSub></span></div>
+        <div class="tbl-wrap" style="border:0"><table class="tbl" data-p-hlth></table></div>
+      </div>
+      <div class="cols" style="margin-top:1rem">
+        <div class="card panel">
+          <div class="panel__head"><h3 data-p-dropH></h3></div>
+          <div data-p-dropChart></div>
+          <div class="note-box" data-p-dropNote></div>
+        </div>
+        <div class="card panel">
+          <div class="panel__head"><h3 data-p-uxH></h3></div>
+          <div class="watch" data-p-ux></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<footer data-app-footer></footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/motion.js"></script>
+<script src="assets/js/seo.js"></script>
+<script src="assets/js/cro.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/console.js"></script>
+</body>
+</html>

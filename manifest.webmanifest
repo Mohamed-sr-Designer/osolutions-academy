@@ -1,0 +1,25 @@
+{
+  "name": "Osolutions Academy",
+  "short_name": "OSO Academy",
+  "description": "Creative education built inside a working agency. Courses in design systems, motion, brand identity, AI workflows and performance creative.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0A1729",
+  "theme_color": "#0A1729",
+  "lang": "en",
+  "dir": "auto",
+  "categories": ["education", "business", "productivity"],
+  "icons": [
+    { "src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "My learning", "url": "./dashboard.html", "description": "Your courses and progress" },
+    { "name": "All courses", "url": "./courses.html", "description": "Browse the catalog" },
+    { "name": "Instructor studio", "url": "./instructor.html", "description": "Cohorts and grading" }
+  ]
+}

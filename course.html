@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Course — Osolutions Academy</title>
+<meta name="description" content="Course details, curriculum, instructor, pricing plans and FAQ.">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<meta name="apple-mobile-web-app-title" content="OSO Academy">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/motion.css">
+</head>
+<body>
+
+<header data-app-header></header>
+
+<main data-course-root>
+
+  <!-- HERO -->
+  <section class="chero">
+    <div class="shell shell--wide chero__in">
+      <div>
+        <nav class="crumbs">
+          <a href="index.html" data-i18n="nav.home"></a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+          <a href="courses.html" data-i18n="nav.courses"></a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+          <span data-c-cat></span>
+        </nav>
+        <div class="badge-row" data-c-badges></div>
+        <h1 data-c-title></h1>
+        <p class="lede" data-c-tagline></p>
+        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:1.4rem">
+          <span class="rating" data-c-rating></span>
+          <span style="font-size:.85rem;color:var(--text-3)" data-c-enrolled></span>
+        </div>
+        <dl class="chero__meta" data-c-meta></dl>
+      </div>
+
+      <aside>
+        <div class="card buy" data-c-buy></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section class="section">
+    <div class="shell shell--wide">
+      <div class="sec-head rv">
+        <span class="sec-head__tag" data-i18n="crs.learnTag"></span>
+        <h2 data-i18n="crs.learnH"></h2>
+        <p data-i18n="crs.learnP"></p>
+      </div>
+      <ul class="outcomes rv" data-c-outcomes></ul>
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section class="section section--tint">
+    <div class="shell shell--wide">
+      <div class="sec-head sec-head--split rv">
+        <div>
+          <span class="sec-head__tag" data-i18n="crs.roadTag"></span>
+          <h2 data-i18n="crs.roadH"></h2>
+        </div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+          <button class="btn btn--ghost btn--sm" data-expand data-i18n="crs.expandAll"></button>
+          <button class="btn btn--ghost btn--sm" data-syllabus data-i18n="crs.syllabus"></button>
+        </div>
+      </div>
+      <div data-c-curriculum></div>
+    </div>
+  </section>
+
+  <!-- WHO -->
+  <section class="section">
+    <div class="shell shell--wide">
+      <div class="sec-head rv">
+        <span class="sec-head__tag" data-i18n="crs.whoTag"></span>
+        <h2 data-i18n="crs.whoH"></h2>
+      </div>
+      <div class="grid grid--3" data-c-who></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section section--tint">
+    <div class="shell shell--wide">
+      <div class="sec-head rv">
+        <span class="sec-head__tag" data-i18n="crs.skillTag"></span>
+        <h2 data-i18n="crs.skillH"></h2>
+      </div>
+      <ul class="skills rv" data-c-skills></ul>
+    </div>
+  </section>
+
+  <!-- INSTRUCTOR -->
+  <section class="section">
+    <div class="shell shell--wide">
+      <div class="sec-head rv">
+        <span class="sec-head__tag" data-i18n="crs.instTag"></span>
+        <h2 data-i18n="crs.instH"></h2>
+      </div>
+      <div class="card card--pad rv" data-c-instructor></div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section section--tint">
+    <div class="shell shell--wide">
+      <div class="sec-head rv">
+        <span class="sec-head__tag" data-i18n="crs.revTag"></span>
+        <h2 data-i18n="crs.revH"></h2>
+      </div>
+      <div class="grid grid--3" data-c-reviews></div>
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section class="section" id="plans">
+    <div class="shell shell--wide">
+      <div class="sec-head sec-head--center rv">
+        <span class="sec-head__tag" data-i18n="crs.planTag"></span>
+        <h2 data-i18n="crs.planH"></h2>
+        <p style="margin-inline:auto" data-i18n="crs.planP"></p>
+      </div>
+      <div class="plans" data-c-plans></div>
+    </div>
+  </section>
+
+  <!-- VALUE -->
+  <section class="section section--ink">
+    <div class="shell shell--wide">
+      <div class="sec-head rv">
+        <span class="sec-head__tag" style="color:var(--orange-400)" data-i18n="crs.valueTag"></span>
+        <h2 data-i18n="crs.valueH"></h2>
+      </div>
+      <div class="grid grid--2" data-c-value></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="shell" style="max-width:900px">
+      <div class="sec-head sec-head--center rv">
+        <span class="sec-head__tag" data-i18n="crs.faqTag"></span>
+        <h2 data-i18n="crs.faqH"></h2>
+      </div>
+      <div class="rv" data-c-faq></div>
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="section section--tint">
+    <div class="shell shell--wide">
+      <div class="sec-head rv"><h2 style="font-size:clamp(1.5rem,2.6vw,2.1rem)" data-i18n="crs.related"></h2></div>
+      <div class="grid grid--3" data-c-related></div>
+    </div>
+  </section>
+
+</main>
+
+<div class="buybar" data-buybar></div>
+
+<footer data-app-footer></footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/motion.js"></script>
+<script src="assets/js/seo.js"></script>
+<script src="assets/js/cro.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/course.js"></script>
+</body>
+</html>

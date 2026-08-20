@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /console.html
+Disallow: /checkout.html
+Disallow: /login.html
+Disallow: /learn.html
+
+Sitemap: https://mohamed-sr-designer.github.io/osolutions-academy/sitemap.xml

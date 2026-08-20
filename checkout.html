@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enrollment — Osolutions Academy</title>
+<meta name="description" content="Complete your enrollment in an Osolutions Academy course.">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<meta name="apple-mobile-web-app-title" content="OSO Academy">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/motion.css">
+</head>
+<body>
+
+<header data-app-header></header>
+
+<main class="shell" style="max-width:1000px;padding-block:clamp(2rem,4vw,3.5rem) clamp(3rem,6vw,5rem)">
+  <nav class="crumbs">
+    <a href="courses.html" data-i18n="nav.courses"></a>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+    <span data-i18n="chk.title"></span>
+  </nav>
+
+  <div data-step-form>
+    <h1 style="font-size:clamp(1.8rem,3.6vw,2.6rem);margin-bottom:1.75rem" data-i18n="chk.title"></h1>
+    <div class="cols" style="grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)">
+      <div style="display:grid;gap:1rem">
+        <div class="card panel">
+          <div class="panel__head"><h3 data-i18n="chk.plan"></h3></div>
+          <div class="role-pick" data-plan-pick style="margin:0"></div>
+        </div>
+        <div class="card panel">
+          <div class="panel__head"><h3 data-learner-h></h3></div>
+          <div style="display:grid;gap:.9rem">
+            <div class="field"><label data-lbl-name></label><input class="input" data-f-name></div>
+            <div class="field"><label data-i18n="auth.email"></label><input class="input" type="email" data-f-email></div>
+            <div class="field"><label data-lbl-phone></label><input class="input" type="tel" data-f-phone></div>
+            <label class="check"><input type="checkbox" checked><span data-lbl-terms></span></label>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card panel" style="position:sticky;top:calc(var(--nav-h) + 20px)">
+          <div class="panel__head"><h3 data-i18n="chk.summary"></h3></div>
+          <div data-sum-course></div>
+          <div class="promo">
+            <input class="input" data-promo data-i18n-ph="chk.promo">
+            <button class="btn btn--ghost btn--sm" data-promo-go data-i18n="chk.apply"></button>
+          </div>
+          <div data-sum-rows></div>
+          <button class="btn btn--primary btn--block btn--lg" style="margin-top:1.1rem" data-pay data-i18n="chk.pay"></button>
+          <p style="font-size:.74rem;color:var(--text-3);margin-top:.85rem;line-height:1.5" data-i18n="chk.payNote"></p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div data-step-done hidden style="text-align:center;padding-block:clamp(2rem,6vw,4rem)">
+    <div style="width:74px;height:74px;border-radius:50%;display:grid;place-items:center;background:var(--green-050);color:var(--green);margin:0 auto 1.5rem" data-done-ico></div>
+    <h1 style="font-size:clamp(2rem,4vw,3rem)" data-i18n="chk.doneH"></h1>
+    <p class="lede" style="margin:1rem auto 2rem" data-i18n="chk.doneP"></p>
+    <div style="display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap" data-done-cta></div>
+  </div>
+</main>
+
+<footer data-app-footer></footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/motion.js"></script>
+<script src="assets/js/seo.js"></script>
+<script src="assets/js/cro.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/checkout.js"></script>
+</body>
+</html>

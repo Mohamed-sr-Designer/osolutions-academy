@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Osolutions Academy</title>
+<meta name="description" content="The in-house academy of Osolutions. Who teaches, how it started and how to reach us.">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<meta name="apple-mobile-web-app-title" content="OSO Academy">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/motion.css">
+</head>
+<body>
+
+<header data-app-header></header>
+
+<main>
+  <section class="page-head">
+    <div class="shell shell--wide">
+      <nav class="crumbs">
+        <a href="index.html" data-i18n="nav.home"></a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+        <span data-i18n="nav.about"></span>
+      </nav>
+      <h1 style="font-size:clamp(2rem,4.4vw,3.2rem)" data-ab-h1></h1>
+      <p class="lede" style="margin-top:.9rem" data-ab-sub></p>
+    </div>
+  </section>
+
+  <section class="shell shell--wide about-hero" style="margin-bottom:clamp(3rem,6vw,5rem)">
+    <img src="assets/img/scenes/critique.webp" alt="A design critique session at Osolutions" loading="lazy">
+  </section>
+
+  <section class="section section--tight section--tint">
+    <div class="shell shell--wide stats-band" data-ab-stats></div>
+  </section>
+
+  <section class="section">
+    <div class="shell shell--wide cols">
+      <div class="rv">
+        <span class="sec-head__tag" data-ab-storyTag></span>
+        <h2 data-ab-storyH></h2>
+        <div style="display:grid;gap:1rem;margin-top:1.25rem" data-ab-story></div>
+      </div>
+      <div class="rv rv-d2">
+        <div class="tl" data-ab-tl></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint" id="instructors">
+    <div class="shell shell--wide">
+      <div class="sec-head sec-head--center rv">
+        <span class="sec-head__tag" data-i18n="home.instTag"></span>
+        <h2 data-i18n="home.instH"></h2>
+        <p style="margin-inline:auto" data-i18n="home.instP"></p>
+      </div>
+      <div class="grid grid--3" data-ab-instructors></div>
+      <p style="text-align:center;font-size:.76rem;color:var(--text-3);margin-top:1.75rem;max-width:60ch;margin-inline:auto" data-ab-photonote></p>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="shell shell--wide cols">
+      <div class="rv">
+        <span class="sec-head__tag" data-i18n="nav.contact"></span>
+        <h2 data-ab-contactH></h2>
+        <p style="margin-top:1rem" data-ab-contactP></p>
+        <div style="display:grid;gap:.7rem;margin-top:1.5rem" data-ab-contacts></div>
+      </div>
+      <div class="card card--pad rv rv-d2">
+        <div style="display:grid;gap:.9rem">
+          <div class="field"><label data-ab-lname></label><input class="input"></div>
+          <div class="field"><label data-i18n="auth.email"></label><input class="input" type="email"></div>
+          <div class="field"><label data-ab-lmsg></label><textarea class="textarea"></textarea></div>
+          <button class="btn btn--primary btn--block" data-ab-send></button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer data-app-footer></footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/motion.js"></script>
+<script src="assets/js/seo.js"></script>
+<script src="assets/js/cro.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/about.js"></script>
+</body>
+</html>
