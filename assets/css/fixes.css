@@ -203,3 +203,128 @@
   .side__nav { max-width: 100%; }
   .pane, .pane__head, .cnsl-head { min-width: 0; }
 }
+
+/* ==========================================================================
+   10. HERO — full screen banner, copy on the photograph
+   Overrides the earlier split hero entirely.
+   ========================================================================== */
+.hero2 {
+  position: relative; overflow: hidden; isolation: isolate;
+  min-height: calc(100svh - var(--nav-h));
+  display: flex; flex-direction: column; justify-content: center;
+  padding-block: clamp(3rem, 7vw, 5rem) 0;
+  background: #0A1729; color: #fff;
+}
+.hero2__bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+
+/* the photograph itself — the only rule that sizes it */
+.hero2__photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%;
+  transform: scale(1.06);
+}
+
+/* legibility: dark from the reading edge, transparent toward the picture */
+.hero2__veil {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(7,14,24,.96) 0%, rgba(7,14,24,.86) 34%, rgba(7,14,24,.5) 62%, rgba(7,14,24,.62) 100%),
+    linear-gradient(180deg, rgba(7,14,24,.72) 0%, transparent 26%, transparent 52%, rgba(7,14,24,.92) 100%);
+}
+[dir="rtl"] .hero2__veil {
+  background:
+    linear-gradient(270deg, rgba(7,14,24,.96) 0%, rgba(7,14,24,.86) 34%, rgba(7,14,24,.5) 62%, rgba(7,14,24,.62) 100%),
+    linear-gradient(180deg, rgba(7,14,24,.72) 0%, transparent 26%, transparent 52%, rgba(7,14,24,.92) 100%);
+}
+.hero2__glow {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(700px 520px at 78% 30%, rgba(247,99,2,.22), transparent 64%),
+    radial-gradient(620px 500px at 4% 88%, rgba(17,37,62,.6), transparent 70%);
+  mix-blend-mode: screen;
+}
+.hero2__grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 78px 78px;
+  -webkit-mask-image: radial-gradient(ellipse 62% 78% at 22% 46%, #000 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse 62% 78% at 22% 46%, #000 0%, transparent 70%);
+}
+
+.hero2__in {
+  position: relative; z-index: 2; display: block;
+  flex: 1; display: flex; align-items: center;
+  padding-block: clamp(1.5rem, 4vw, 3rem);
+}
+.hero2__copy { max-width: 40rem; }
+.hero2 h1 {
+  color: #fff; font-size: clamp(2.25rem, 5.6vw, 4.4rem);
+  letter-spacing: -0.044em; line-height: 1.04;
+  margin-block: 1.35rem 1.2rem;
+  text-shadow: 0 2px 30px rgba(0,0,0,.45);
+}
+[dir="rtl"] .hero2 h1 { line-height: 1.3; letter-spacing: 0; }
+.hero2 h1 .hl { color: var(--orange-400); }
+.hero2__sub {
+  color: rgba(255,255,255,.82); font-size: clamp(1.02rem, 1.4vw, 1.2rem);
+  line-height: 1.62; max-width: 46ch; text-shadow: 0 1px 16px rgba(0,0,0,.4);
+}
+.hero2__row { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; margin-top: 2.1rem; }
+.hero2__proof { display: flex; align-items: center; gap: .85rem; flex-wrap: wrap; margin-top: 2rem; }
+.hero2__proof .av-stack .av { border-color: rgba(255,255,255,.28); }
+.hero2__proof .stars svg { width: 14px; height: 14px; }
+.hero2__proof span.t { font-size: .84rem; color: rgba(255,255,255,.72); }
+.hero2__proof span.t b { color: #fff; font-weight: 660; }
+
+/* bottom stat strip keeps the banner from feeling empty */
+.hero2__strip {
+  position: relative; z-index: 2;
+  border-top: 1px solid rgba(255,255,255,.14);
+  background: rgba(7,14,24,.42);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.hero2__stats {
+  display: grid; grid-template-columns: repeat(4, minmax(0,1fr));
+  padding-block: clamp(1rem, 2vw, 1.5rem);
+}
+.hero2__stats > div { padding-inline: clamp(.5rem, 1.5vw, 1.25rem); }
+.hero2__stats > div + div { border-inline-start: 1px solid rgba(255,255,255,.12); }
+.hero2__stats b {
+  display: block; font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.3rem, 2.6vw, 2rem); letter-spacing: -0.04em; color: #fff; line-height: 1;
+}
+.hero2__stats span {
+  display: block; margin-top: .35rem; font-size: .76rem;
+  color: rgba(255,255,255,.62); line-height: 1.35;
+}
+@media (max-width: 760px) {
+  .hero2__stats { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.1rem 0; }
+  .hero2__stats > div:nth-child(3) { border-inline-start: 0; }
+}
+@media (max-width: 940px) {
+  .hero2 { min-height: calc(100svh - var(--nav-h)); padding-block: clamp(2.5rem, 8vw, 4rem) 0; }
+  .hero2__photo { object-position: 62% 35%; }
+  .hero2__copy { max-width: none; }
+}
+.hero2__scroll { z-index: 3; inset-block-end: calc(clamp(1rem, 2vw, 1.5rem) + 74px); }
+@media (max-width: 940px) { .hero2__scroll { display: none; } }
+
+/* reduced motion: no scale drift on the banner photo */
+@media (prefers-reduced-motion: reduce) { .hero2__photo { transform: none; } }
+
+/* ---------- 11. Showcase panel: image fills, copy sets the height ----------
+   height:100% could not resolve once the panel dropped its aspect-ratio on
+   mobile, so the photo collapsed to 0. Absolute fill works at every width. */
+.showcase img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+}
+@media (max-width: 760px) {
+  .showcase { aspect-ratio: auto; min-height: 0; }
+  .showcase__in {
+    position: relative; inset: auto; max-width: none;
+    padding-block: clamp(2rem, 8vw, 3rem);
+  }
+}

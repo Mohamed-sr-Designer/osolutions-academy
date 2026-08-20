@@ -17,6 +17,14 @@
       ar: 'مدعومة من أوسوليوشنز، وكالة كرييتف وأداء في القاهرة بتدير اتناشر حساب عميل شغّال.'
     },
     cta:  { en: 'Explore our courses', ar: 'تصفّح كورساتنا' },
+    cta2: { en: 'How a cohort runs', ar: 'الدفعة بتمشي إزاي' },
+    proof: { en: 'learners across Egypt and the Gulf', ar: 'متعلّم في مصر والخليج' },
+    heroStats: [
+      { n: '6,400+', l: { en: 'Learners since 2022', ar: 'متعلّم من ٢٠٢٢' } },
+      { n: '8',      l: { en: 'Live programmes', ar: 'برنامج شغّال' } },
+      { n: '4.8',    l: { en: 'Average rating', ar: 'متوسط التقييم' } },
+      { n: '12',     l: { en: 'Client accounts behind the material', ar: 'حساب عميل ورا المادة' } }
+    ],
     revN: '180+',
     rev:  { en: 'reviews', ar: 'تقييم' },
     from: { en: 'from', ar: 'من' },
@@ -198,8 +206,20 @@
       A.esc(t[2]) + '<span class="hl">' + A.esc(t[3]) + '</span>');
     set('[data-h-sub]', T.pick(C.sub));
     html('[data-h-cta]', '<span>' + A.esc(T.pick(C.cta)) + '</span>' + arrow);
-    html('[data-h-rev]', A.stars(4.8) +
-      '<small>' + A.esc(T.pick(C.from)) + ' <b>' + C.revN + '</b> ' + A.esc(T.pick(C.rev)) + '</small>');
+    html('[data-h-cta2]', '<span>' + A.esc(T.pick(C.cta2)) + '</span>' +
+      '<span class="cta-round__ico">' + A.icon('chev') + '</span>');
+
+    html('[data-h-proof]',
+      '<span class="av-stack">' + ['s1','s4','s3','s7','s5'].map(function (k) {
+        return '<img class="av av--sm" src="assets/img/people/' + k + '.webp" alt="" loading="lazy">';
+      }).join('') + '</span>' +
+      A.stars(4.8) +
+      '<span class="t"><b>4.8</b> ' + A.esc(T.pick(C.from)) + ' <b>' + C.revN + '</b> ' +
+      A.esc(T.pick(C.rev)) + ' · <b>6,400+</b> ' + A.esc(T.pick(C.proof)) + '</span>');
+
+    html('[data-h-herostats]', C.heroStats.map(function (x) {
+      return '<div><b>' + A.esc(x.n) + '</b><span>' + A.esc(T.pick(x.l)) + '</span></div>';
+    }).join(''));
     set('[data-h-scroll]', T.pick({ en: 'Scroll', ar: 'انزل' }));
     html('[data-h-logos]', C.logos.concat(C.logos).map(x => '<span>' + A.esc(x) + '</span>').join(''));
 

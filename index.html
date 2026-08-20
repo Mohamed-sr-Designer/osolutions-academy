@@ -24,24 +24,34 @@
 
 <main>
 
-  <!-- 1 · HERO -->
+  <!-- 1 · HERO — full screen banner, copy sits on the photograph -->
   <section class="hero2">
-    <div class="hero2__bg"><div class="hero2__glow"></div><div class="hero2__grid"></div></div>
+    <div class="hero2__bg">
+      <img class="hero2__photo" src="assets/img/scenes/studio.webp"
+           alt="The Osolutions design team working in the Cairo studio"
+           width="1600" height="900" fetchpriority="high">
+      <div class="hero2__veil"></div>
+      <div class="hero2__glow"></div>
+      <div class="hero2__grid"></div>
+    </div>
+
     <div class="shell shell--wide hero2__in">
-      <div>
+      <div class="hero2__copy">
         <span class="pill pill--on-dark" data-h-pill></span>
         <h1 data-h-title data-split></h1>
         <p class="hero2__sub" data-h-sub></p>
         <div class="hero2__row">
           <a class="cta-round" href="courses.html" data-h-cta data-magnet="0.16"></a>
-          <div class="hero2__rev" data-h-rev></div>
+          <a class="cta-round cta-round--on-dark" href="#impact" data-h-cta2></a>
         </div>
-      </div>
-      <div class="hero2__art" data-tilt="6">
-        <img class="hero2__hand" src="assets/img/scenes/hero-hand.webp" alt="" width="1100" height="1100" fetchpriority="high">
-        <img class="hero2__chip" src="assets/img/mark-white.svg" alt="" width="78" height="78">
+        <div class="hero2__proof" data-h-proof></div>
       </div>
     </div>
+
+    <div class="hero2__strip">
+      <div class="shell shell--wide hero2__stats" data-h-herostats></div>
+    </div>
+
     <a class="hero2__scroll" href="#impact" aria-label="Scroll to content">
       <span data-h-scroll></span><i></i>
     </a>
