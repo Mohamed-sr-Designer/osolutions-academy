@@ -283,6 +283,16 @@
     'b.team':              { en: 'Team friendly',           ar: 'مناسب للفرق' },
     'b.updated':           { en: 'Updated 2026',            ar: 'محدّث ٢٠٢٦' },
 
+    /* --- session delivery types --- */
+    'ses.title':           { en: 'How the sessions run',    ar: 'الجلسات بتشتغل إزاي' },
+    'ses.offline':         { en: 'On site',                 ar: 'حضوري' },
+    'ses.online':          { en: 'Live online',             ar: 'أونلاين مباشر' },
+    'ses.recorded':        { en: 'Recorded',                ar: 'مسجّل' },
+    'ses.offlineD':        { en: 'In the Osolutions studio in Cairo, capped at the room size. Optional on every course that offers it.', ar: 'في استوديو أوسوليوشنز بالقاهرة، بعدد محدود حسب سعة القاعة. اختياري في أي كورس بيوفّره.' },
+    'ses.onlineD':         { en: 'One live room every week at 8 PM Cairo time, with review and questions.', ar: 'أوضة مباشرة كل أسبوع الساعة ٨ مساءً بتوقيت القاهرة، للمراجعة والأسئلة.' },
+    'ses.recordedD':       { en: 'Short lessons you watch on your own time, kept in your account for life.', ar: 'دروس قصيرة بتتفرج عليها في وقتك، وبتفضل في حسابك للأبد.' },
+    'ses.filter':          { en: 'Sessions',                ar: 'نوع الجلسات' },
+
     /* --- command palette --- */
     'nav.console':         { en: 'Business console',        ar: 'لوحة الأعمال' },
     'nav.search':          { en: 'Search',                  ar: 'بحث' },

@@ -42,6 +42,8 @@
 
   function render() {
     const T = w.I18n, A = w.App, L = w.LMS, S = L.STUDENT;
+    const _h1 = d.querySelector('[data-page-h1]'); if (_h1) _h1.textContent = T.t('nav.dashboard');
+
 
     /* --- sidebar --- */
     d.querySelector('[data-who]').innerHTML =

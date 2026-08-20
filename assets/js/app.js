@@ -57,7 +57,7 @@
 
   function icon(name, cls) {
     const p = ICON[name] || '';
-    return '<svg class="' + (cls || '') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    return '<svg class="ico ' + (cls || '') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
       'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + p + '</svg>';
   }
 
@@ -86,6 +86,26 @@
 
   function badges(list, opts) {
     return (list || []).map(id => badge(id, opts)).join('');
+  }
+
+  /* ---------------- Session delivery types ---------------- */
+  const SESSION = {
+    offline:  { k: 'ses.offline',  d: 'ses.offlineD',  tone: 'violet', i: 'users' },
+    online:   { k: 'ses.online',   d: 'ses.onlineD',   tone: 'red',    i: 'chat' },
+    recorded: { k: 'ses.recorded', d: 'ses.recordedD', tone: 'navy',   i: 'play' }
+  };
+  const SESSION_ORDER = ['offline', 'online', 'recorded'];
+
+  function sessionBadge(id, opts) {
+    const s = SESSION[id];
+    if (!s) return '';
+    const o = opts || {};
+    return '<span class="badge badge--' + s.tone + (o.lg ? ' badge--lg' : '') + '">' +
+      icon(s.i) + T().t(s.k) + '</span>';
+  }
+  function sessionBadges(list, opts) {
+    return SESSION_ORDER.filter(id => (list || []).indexOf(id) > -1)
+      .map(id => sessionBadge(id, opts)).join('');
   }
 
   const LVL = { beginner: 1, intermediate: 2, advanced: 3 };
@@ -195,6 +215,9 @@
         '</div>' +
       '</div>';
 
+    const themeBtn = host.querySelector('[data-theme-btn]');
+    themeBtn.innerHTML = icon(d.documentElement.getAttribute('data-theme') === 'dark' ? 'sun' : 'moon');
+
     const langBtn = host.querySelector('[data-lang-btn]');
     langBtn.textContent = T().lang === 'en' ? 'ع' : 'EN';
     langBtn.addEventListener('click', () => T().toggle());
@@ -229,10 +252,11 @@
             '<img src="assets/img/logo.svg" alt="Osolutions">' +
             '<p data-i18n="ftr.tagline"></p>' +
             '<div class="ftr__social" style="margin-top:1.25rem">' +
-              '<a href="#" aria-label="Instagram">' + icon('ig') + '</a>' +
-              '<a href="#" aria-label="LinkedIn">' + icon('li') + '</a>' +
-              '<a href="#" aria-label="Behance">' + icon('be') + '</a>' +
-              '<a href="#" aria-label="YouTube">' + icon('yt') + '</a>' +
+              /* swap data-social hrefs for the real handles at launch */
+              '<a href="about.html#contact" data-social="instagram" aria-label="Instagram">' + icon('ig') + '</a>' +
+              '<a href="about.html#contact" data-social="linkedin" aria-label="LinkedIn">' + icon('li') + '</a>' +
+              '<a href="about.html#contact" data-social="behance" aria-label="Behance">' + icon('be') + '</a>' +
+              '<a href="about.html#contact" data-social="youtube" aria-label="YouTube">' + icon('yt') + '</a>' +
             '</div>' +
           '</div>' +
           '<div><h5 data-i18n="ftr.learn"></h5><ul>' + courseLinks +
@@ -245,10 +269,10 @@
             '<li><a href="about.html#contact" data-i18n="nav.contact"></a></li>' +
           '</ul></div>' +
           '<div><h5 data-i18n="ftr.support"></h5><ul>' +
-            '<li><a href="#" data-i18n="ftr.help"></a></li>' +
-            '<li><a href="#" data-i18n="ftr.privacy"></a></li>' +
-            '<li><a href="#" data-i18n="ftr.terms"></a></li>' +
-            '<li><a href="#" data-i18n="ftr.refund"></a></li>' +
+            '<li><a href="help.html" data-i18n="ftr.help"></a></li>' +
+            '<li><a href="privacy.html" data-i18n="ftr.privacy"></a></li>' +
+            '<li><a href="terms.html" data-i18n="ftr.terms"></a></li>' +
+            '<li><a href="refunds.html" data-i18n="ftr.refund"></a></li>' +
           '</ul></div>' +
         '</div>' +
         '<div class="ftr__bottom">' +
@@ -273,27 +297,26 @@
     const top = (c.badges || []).slice(0, 2);
     const prog = o.progress;
 
-    return '<a class="card card--hover ccard rv" href="course.html?id=' + c.id + '">' +
-      '<div class="thumb">' +
+    return '<a class="card card--hover ccard rv" data-spot href="course.html?id=' + c.id + '">' +
+      '<div class="thumb thumb--slim">' +
         '<img src="' + c.cover + '" alt="" loading="lazy" width="1600" height="900">' +
         '<div class="thumb__badges">' + badges(top) + '</div>' +
         '<span class="thumb__meta">' + t.num(c.weeks) + ' ' + t.t('crs.weeks') + ' · ' + t.num(c.lessonCount) + ' ' + t.t('crs.lessons') + '</span>' +
+        '<img class="ccard__face" src="' + i.img + '" alt="' + esc(t.pick(i.name)) + '" loading="lazy">' +
       '</div>' +
       '<div class="ccard__body">' +
         '<span class="ccard__cat">' + esc(t.pick(c.catName)) + '</span>' +
         '<h3 class="ccard__title">' + esc(t.pick(c.title)) + '</h3>' +
         '<p class="ccard__desc">' + esc(t.pick(c.tagline)) + '</p>' +
-        '<div class="badge-row">' + levelBadge(c.level) +
-          '<span class="rating">' + stars(c.rating) + '<b>' + c.rating.toFixed(1) + '</b>' +
-          '<span>(' + t.num(c.reviews) + ')</span></span>' +
-        '</div>' +
+        '<div class="badge-row">' + sessionBadges(c.sessions) + levelBadge(c.level) + '</div>' +
         (prog != null
-          ? '<div style="margin-top:.3rem"><div class="bar"><span style="width:' + prog + '%"></span></div>' +
-            '<small style="display:block;margin-top:.4rem;font-size:.74rem;color:var(--text-3)">' +
+          ? '<div style="margin-top:.35rem"><div class="bar"><span style="width:' + prog + '%"></span></div>' +
+            '<small style="display:block;margin-top:.45rem;font-size:.74rem;color:var(--text-3)">' +
             t.num(prog) + '% ' + t.t('g.complete') + '</small></div>'
           : '') +
         '<div class="ccard__foot">' +
-          '<span class="ccard__by"><img src="' + i.img + '" alt="" loading="lazy"><span>' + esc(t.pick(i.name)) + '</span></span>' +
+          '<span class="ccard__by"><span>' + esc(t.pick(i.name)) + '</span>' +
+            '<span class="rating">' + stars(c.rating) + '<b>' + c.rating.toFixed(1) + '</b></span></span>' +
           (o.hidePrice ? '' : '<span class="ccard__price">' + t.money(c.price) + '</span>') +
         '</div>' +
       '</div>' +
@@ -472,6 +495,7 @@
   /* ---------------- Public API ---------------- */
   const App = {
     icon, badge, badges, levelBadge, stars, esc, toast, courseCard, reveal,
+    sessionBadge, sessionBadges, SESSION, SESSION_ORDER,
     bindAccordions, countUp, setTheme, save,
     get state() { return state; },
     isEnrolled(id) { return state.enrolled.indexOf(id) > -1; },

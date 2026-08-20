@@ -113,58 +113,50 @@
     }
   };
 
-  /* ---------------- Shared plan template ---------------- */
+  /* ---------------- Shared plan template ----------------
+     All three plans render the SAME ordered rows so the columns compare
+     line for line. Only the on/off state and the seat count change.        */
+  const PLAN_ROWS = [
+    { en: 'Lifetime access to every recording',        ar: 'وصول مدى الحياة لكل التسجيلات' },
+    { en: 'All downloadable templates and files',      ar: 'كل الملفات والقوالب القابلة للتحميل' },
+    { en: 'Completion certificate',                    ar: 'شهادة إتمام' },
+    { en: 'Free updates when the course is refreshed', ar: 'تحديثات مجانية لما الكورس يتحدّث' },
+    { en: 'Community channel access',                  ar: 'الدخول لقناة المجتمع' },
+    { en: 'Graded assignment reviews',                 ar: 'مراجعة وتصحيح التسليمات' },
+    { en: 'Priority Q&A in live sessions',             ar: 'أولوية في الأسئلة بالجلسات المباشرة' },
+    { en: 'One-to-one session with the instructor',    ar: 'جلسة فردية مع المدرب' },
+    { en: 'Shared team workspace for assignments',     ar: 'مساحة عمل مشتركة للتسليمات' }
+  ];
+
+  function rows(mask) {
+    return PLAN_ROWS.map((r, i) => ({ en: r.en, ar: r.ar, on: mask[i] === 1 }));
+  }
+
   function plans(base) {
     return [
       {
         id: 'core',
         name: { en: 'The Core Access', ar: 'الوصول الأساسي' },
         note: { en: 'Self paced, full curriculum', ar: 'حسب وقتك، منهج كامل' },
-        price: base, was: null, badge: null,
-        features: [
-          { en: 'Lifetime access to every recording', ar: 'وصول مدى الحياة لكل التسجيلات', on: true },
-          { en: 'All downloadable templates and files', ar: 'كل الملفات والقوالب القابلة للتحميل', on: true },
-          { en: 'Completion certificate', ar: 'شهادة إتمام', on: true },
-          { en: 'Free updates when the course is refreshed', ar: 'تحديثات مجانية لما الكورس يتحدّث', on: true },
-          { en: 'Community channel access', ar: 'الدخول لقناة المجتمع', on: true },
-          { en: 'Graded assignment reviews', ar: 'مراجعة وتصحيح التسليمات', on: false },
-          { en: 'Priority Q&A in live sessions', ar: 'أولوية في الأسئلة بالجلسات المباشرة', on: false },
-          { en: 'One-to-one session with the instructor', ar: 'جلسة فردية مع المدرب', on: false }
-        ]
+        seats: 1, price: base, was: null, badge: null,
+        features: rows([1,1,1,1,1,0,0,0,0])
       },
       {
         id: 'premium',
         name: { en: 'The Premium Package', ar: 'الباقة المميزة' },
         note: { en: 'Live cohort with full review', ar: 'دفعة مباشرة مع مراجعة كاملة' },
-        price: Math.round(base * 1.5 / 100) * 100, was: null, badge: 'popular',
-        features: [
-          { en: 'Lifetime access to every recording', ar: 'وصول مدى الحياة لكل التسجيلات', on: true },
-          { en: 'All downloadable templates and files', ar: 'كل الملفات والقوالب القابلة للتحميل', on: true },
-          { en: 'Completion certificate', ar: 'شهادة إتمام', on: true },
-          { en: 'Free updates when the course is refreshed', ar: 'تحديثات مجانية لما الكورس يتحدّث', on: true },
-          { en: 'Community channel access', ar: 'الدخول لقناة المجتمع', on: true },
-          { en: 'Graded assignment reviews', ar: 'مراجعة وتصحيح التسليمات', on: true },
-          { en: 'Priority Q&A in live sessions', ar: 'أولوية في الأسئلة بالجلسات المباشرة', on: true },
-          { en: 'One-to-one session with the instructor', ar: 'جلسة فردية مع المدرب', on: true }
-        ]
+        seats: 1, price: Math.round(base * 1.5 / 100) * 100, was: null, badge: 'popular',
+        features: rows([1,1,1,1,1,1,1,1,0])
       },
       {
         id: 'duo',
         name: { en: 'Double Seat Package', ar: 'باقة المقعدين' },
         note: { en: 'Two people from the same team', ar: 'شخصين من نفس الفريق' },
+        seats: 2,
         price: Math.round(base * 2.6 / 100) * 100,
         was: Math.round(base * 3 / 100) * 100,
         badge: 'value',
-        features: [
-          { en: 'Everything in the Premium Package, twice', ar: 'كل حاجة في الباقة المميزة، مرتين', on: true },
-          { en: 'Two seats in the same live cohort', ar: 'مقعدين في نفس الدفعة المباشرة', on: true },
-          { en: 'Shared team workspace for assignments', ar: 'مساحة عمل مشتركة للتسليمات', on: true },
-          { en: 'One team review session on your own work', ar: 'جلسة مراجعة على شغل فريقكم', on: true },
-          { en: 'Completion certificate for both seats', ar: 'شهادة إتمام للمقعدين', on: true },
-          { en: 'Free updates when the course is refreshed', ar: 'تحديثات مجانية لما الكورس يتحدّث', on: true },
-          { en: 'Priority Q&A in live sessions', ar: 'أولوية في الأسئلة بالجلسات المباشرة', on: true },
-          { en: 'One-to-one session for each seat', ar: 'جلسة فردية لكل مقعد', on: true }
-        ]
+        features: rows([1,1,1,1,1,1,1,1,1])
       }
     ];
   }
@@ -243,6 +235,7 @@
       price: 8000, weeks: 6, hours: 26, lessonCount: 42,
       students: 1240, rating: 4.9, reviews: 186,
       start: '2026-09-14', seats: { total: 30, left: 7 },
+      sessions: ['online','recorded','offline'],
       langNote: { en: 'Arabic delivery, English materials', ar: 'شرح بالعربي، مواد بالإنجليزي' },
       outcomes: [
         { en: 'A complete post template kit for six platform sizes, built on one master grid', ar: 'كيت تمبلتات كامل لستة مقاسات منصات، مبني على جريد واحد' },
@@ -353,6 +346,7 @@
       price: 9500, weeks: 5, hours: 24, lessonCount: 34,
       students: 860, rating: 4.8, reviews: 121,
       start: '2026-09-21', seats: { total: 24, left: 11 },
+      sessions: ['online','recorded'],
       langNote: { en: 'Arabic delivery, English materials', ar: 'شرح بالعربي، مواد بالإنجليزي' },
       outcomes: [
         { en: 'A six second brand bumper finished to broadcast standard', ar: 'بامبر براند ٦ ثواني منفّذ بمستوى بث' },
@@ -447,6 +441,7 @@
       price: 11000, weeks: 6, hours: 28, lessonCount: 38,
       students: 640, rating: 4.9, reviews: 94,
       start: '2026-10-05', seats: { total: 20, left: 4 },
+      sessions: ['offline','online','recorded'],
       langNote: { en: 'Arabic delivery, English materials', ar: 'شرح بالعربي، مواد بالإنجليزي' },
       outcomes: [
         { en: 'A written strategy page that survives client questions', ar: 'صفحة استراتيجية مكتوبة بتصمد قدام أسئلة العميل' },
@@ -549,6 +544,7 @@
       price: 5500, weeks: 3, hours: 14, lessonCount: 26,
       students: 2260, rating: 4.7, reviews: 288,
       start: '2026-09-07', seats: { total: 60, left: 23 },
+      sessions: ['recorded','online'],
       langNote: { en: 'Arabic delivery, English materials', ar: 'شرح بالعربي، مواد بالإنجليزي' },
       outcomes: [
         { en: 'A repeatable prompt structure that survives model updates', ar: 'هيكل برومبت متكرر بيصمد مع تحديثات الموديلات' },
@@ -625,6 +621,7 @@
       price: 8500, weeks: 4, hours: 20, lessonCount: 30,
       students: 980, rating: 4.8, reviews: 143,
       start: '2026-09-28', seats: { total: 28, left: 9 },
+      sessions: ['online','recorded'],
       langNote: { en: 'Arabic delivery, English materials', ar: 'شرح بالعربي، مواد بالإنجليزي' },
       outcomes: [
         { en: 'A hook library of twenty openings sorted by why they work', ar: 'مكتبة هوكس فيها عشرين بداية مرتّبة حسب سبب نجاحها' },
@@ -709,6 +706,7 @@
       price: 10000, weeks: 5, hours: 25, lessonCount: 32,
       students: 520, rating: 4.9, reviews: 78,
       start: '2026-10-12', seats: { total: 18, left: 6 },
+      sessions: ['offline','online','recorded'],
       langNote: { en: 'Arabic delivery, English materials', ar: 'شرح بالعربي، مواد بالإنجليزي' },
       outcomes: [
         { en: 'A shot list and mood direction any photographer can follow', ar: 'لستة لقطات وتوجيه مود أي مصور يقدر يمشي عليها' },
@@ -801,6 +799,7 @@
       price: 4900, weeks: 4, hours: 16, lessonCount: 28,
       students: 1720, rating: 4.8, reviews: 214,
       start: '2026-09-07', seats: { total: 60, left: 31 },
+      sessions: ['recorded'],
       langNote: { en: 'Arabic delivery, English materials', ar: 'شرح بالعربي، مواد بالإنجليزي' },
       outcomes: [
         { en: 'Pen tool control that does not need cleaning up afterwards', ar: 'تحكم في البن مش محتاج تنضيف بعديه' },
@@ -882,6 +881,7 @@
       price: 6500, weeks: 4, hours: 18, lessonCount: 27,
       students: 740, rating: 4.7, reviews: 96,
       start: '2026-10-19', seats: { total: 26, left: 14 },
+      sessions: ['online','recorded'],
       langNote: { en: 'Arabic delivery, English materials', ar: 'شرح بالعربي، مواد بالإنجليزي' },
       outcomes: [
         { en: 'A concept written in one sentence that a client repeats back', ar: 'فكرة مكتوبة في جملة واحدة العميل بيعيدها' },

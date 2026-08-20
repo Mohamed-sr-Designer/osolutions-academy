@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sign in — Osolutions Academy</title>
-<meta name="description" content="Sign in to the Osolutions Academy learning platform.">
+<title>Refund policy — Osolutions Academy</title>
+<meta name="description" content="When a refund applies, how to ask for one, and how long it takes.">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="assets/img/icon-192.png">
@@ -15,30 +15,42 @@
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/css/pages.css">
 <link rel="stylesheet" href="assets/css/motion.css">
+<link rel="stylesheet" href="assets/css/home.css">
 <link rel="stylesheet" href="assets/css/fixes.css">
 </head>
 <body>
 
 <header data-app-header></header>
 
-<main class="auth">
-  <div class="auth__box">
-    <h1 style="font-size:clamp(1.7rem,3.4vw,2.3rem)" data-i18n="auth.title"></h1>
-    <p style="margin-top:.7rem;font-size:.92rem" data-i18n="auth.sub"></p>
+<main>
+  <section class="page-head">
+    <div class="shell shell--wide">
+      <nav class="crumbs">
+        <a href="index.html" data-i18n="nav.home"></a>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+        <span data-pg-crumb></span>
+      </nav>
+      <h1 style="font-size:clamp(2rem,4.4vw,3.2rem)" data-pg-h data-split></h1>
+      <p class="lede" style="margin-top:.9rem" data-pg-sub></p>
+    </div>
+  </section>
 
-    <div class="role-pick" data-roles></div>
+  <section class="section" style="padding-top:clamp(1.5rem,3vw,2.5rem)">
+    <div class="shell">
+      <div data-pg-body></div>
+    </div>
+  </section>
 
-    <div class="card card--pad">
-      <div style="display:grid;gap:.9rem">
-        <div class="field"><label data-i18n="auth.email"></label><input class="input" type="email" value="mohamed.tarek@osolutions.academy"></div>
-        <div class="field"><label data-i18n="auth.password"></label><input class="input" type="password" value="••••••••••"></div>
-        <label class="check"><input type="checkbox" checked><span data-i18n="auth.remember"></span></label>
-        <button class="btn btn--navy btn--block" data-signin data-i18n="nav.signin"></button>
+  <section class="section section--tint">
+    <div class="shell shell--wide">
+      <div class="band rv">
+        <span class="pill pill--on-dark" data-pg-ctaPill></span>
+        <h2 data-pg-ctaH></h2>
+        <p data-pg-ctaP></p>
+        <a class="cta-round" href="courses.html" data-pg-ctaBtn></a>
       </div>
     </div>
-
-    <p style="font-size:.76rem;color:var(--text-3);margin-top:1.1rem;text-align:center;line-height:1.55" data-i18n="auth.demoNote"></p>
-  </div>
+  </section>
 </main>
 
 <footer data-app-footer></footer>
@@ -49,6 +61,8 @@
 <script src="assets/js/seo.js"></script>
 <script src="assets/js/cro.js"></script>
 <script src="assets/js/app.js"></script>
-<script src="assets/js/auth.js"></script>
+<script src="assets/js/support.js"></script>
+<script>window.PAGE_KEY = 'refunds';</script>
+<script src="assets/js/support-boot.js"></script>
 </body>
 </html>

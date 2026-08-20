@@ -82,44 +82,62 @@
 }
 
 [data-theme="dark"] {
-  --bg:        #0B1726;
-  --bg-2:      #0F1E31;
-  --bg-3:      #16293F;
-  --bg-4:      #1E3450;
-  --card:      #102034;
-  --card-2:    #142942;
-  --ink-block: #060F1B;
+  /* base is a true near-black navy so cards and glows have somewhere to sit */
+  --bg:        #070E18;
+  --bg-2:      #0B1523;
+  --bg-3:      #131F31;
+  --bg-4:      #1D2C42;
+  --card:      #0E1826;
+  --card-2:    #131F30;
+  --ink-block: #050A12;
 
-  --text:      #EAF1F8;
-  --text-2:    #A4B6CB;
-  --text-3:    #7086A0;
-  --text-inv:  #EAF1F8;
+  /* text steps tuned for AA on --card */
+  --text:      #EEF4FA;
+  --text-2:    #AFC0D2;
+  --text-3:    #7C8FA5;
+  --text-inv:  #EEF4FA;
 
-  --navy:      #EAF1F8;
-  --navy-700:  #D2E0EE;
-  --navy-500:  #A4B6CB;
+  --navy:      #F2F7FB;
+  --navy-700:  #D8E4EF;
+  --navy-500:  #AFC0D2;
 
-  --line:        rgba(160, 190, 220, 0.13);
-  --line-2:      rgba(160, 190, 220, 0.22);
-  --line-strong: rgba(160, 190, 220, 0.38);
+  --line:        rgba(150, 180, 215, 0.14);
+  --line-2:      rgba(150, 180, 215, 0.24);
+  --line-strong: rgba(150, 180, 215, 0.42);
 
-  --orange-050: rgba(247, 99, 2, .13);
-  --green-050:  rgba(18, 133, 92, .16);
-  --amber-050:  rgba(181, 118, 8, .17);
-  --red-050:    rgba(192, 57, 43, .16);
-  --violet-050: rgba(120, 108, 224, .17);
-  --cyan-050:   rgba(14, 124, 147, .18);
-  --green:      #3FD09A;
-  --amber:      #F0B429;
-  --red:        #FF7B6B;
-  --violet:     #A79AF5;
-  --cyan:       #45C6DE;
+  --orange:     #FF7A1F;
+  --orange-600: #FF8F42;
+  --orange-400: #FFA764;
+  --orange-050: rgba(255, 122, 31, .14);
 
-  --sh-1: 0 1px 2px rgba(0,0,0,.34);
-  --sh-2: 0 2px 6px rgba(0,0,0,.3), 0 10px 28px -14px rgba(0,0,0,.6);
-  --sh-3: 0 6px 12px rgba(0,0,0,.34), 0 26px 60px -22px rgba(0,0,0,.75);
+  --green-050:  rgba(63, 208, 154, .15);
+  --amber-050:  rgba(240, 180, 41, .15);
+  --red-050:    rgba(255, 123, 107, .15);
+  --violet-050: rgba(167, 154, 245, .16);
+  --cyan-050:   rgba(69, 198, 222, .16);
+  --green:      #4ADCA6;
+  --amber:      #F5BE3E;
+  --red:        #FF8A79;
+  --violet:     #B3A7FF;
+  --cyan:       #4FD2EA;
+
+  --sh-1: 0 1px 2px rgba(0,0,0,.5);
+  --sh-2: 0 2px 6px rgba(0,0,0,.45), 0 12px 30px -14px rgba(0,0,0,.75);
+  --sh-3: 0 8px 16px rgba(0,0,0,.5), 0 30px 66px -24px rgba(0,0,0,.9);
+  --sh-orange: 0 8px 30px -10px rgba(255,122,31,.5);
   color-scheme: dark;
 }
+
+/* dark surfaces get a hairline top light so cards read as raised, not painted on */
+[data-theme="dark"] .card,
+[data-theme="dark"] .tbl-wrap,
+[data-theme="dark"] .acc { background-image: linear-gradient(180deg, rgba(255,255,255,.028), transparent 40%); }
+[data-theme="dark"] .section--tint { background: var(--bg-2); }
+[data-theme="dark"] .input,
+[data-theme="dark"] .select,
+[data-theme="dark"] .textarea { background: var(--bg-2); }
+[data-theme="dark"] .chip { background: var(--bg-2); }
+[data-theme="dark"] .bar { background: var(--bg-4); }
 
 /* ---------- 2. Base ---------- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -150,6 +168,8 @@ body {
 body.is-locked { overflow: hidden; }
 
 img, svg, video { display: block; max-width: 100%; }
+/* every icon minted by App.icon carries .ico — contextual rules still win on specificity */
+.ico { width: 16px; height: 16px; flex: none; }
 a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font: inherit; color: inherit; }
 button { background: none; border: none; cursor: pointer; }

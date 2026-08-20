@@ -1,0 +1,205 @@
+/* ==========================================================================
+   OSOLUTIONS ACADEMY — layout corrections
+   Loaded last. Card, plan, course-hero and dark-mode refinements.
+   ========================================================================== */
+
+/* ---------- 1. Course card: slimmer cover, human face on top ---------- */
+.thumb--slim { aspect-ratio: 21/9; }
+.ccard__face {
+  position: absolute; z-index: 3;
+  inset-block-end: -22px; inset-inline-start: 1.05rem;
+  width: 48px; height: 48px; border-radius: 50%; object-fit: cover;
+  border: 3px solid var(--card); background: var(--bg-3);
+  box-shadow: var(--sh-2);
+  transition: transform .3s var(--ease);
+}
+.card--hover:hover .ccard__face { transform: scale(1.06) translateY(-2px); }
+.ccard__body { padding-block-start: 1.9rem; }
+.ccard__foot { align-items: flex-start; }
+.ccard__by { flex-direction: column; align-items: flex-start; gap: .25rem; }
+.ccard__by > span:first-child {
+  font-size: .8rem; font-weight: 600; color: var(--navy);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%;
+}
+.ccard__by .rating { font-size: .74rem; }
+.ccard__by .rating .stars svg { width: 10px; height: 10px; }
+
+/* the dark homepage card gets the same treatment */
+.dcard__art { aspect-ratio: 21/9; }
+.dcard__face {
+  position: absolute; z-index: 3;
+  inset-block-end: -20px; inset-inline-start: 1.05rem;
+  width: 44px; height: 44px; border-radius: 50%; object-fit: cover;
+  border: 3px solid #10203A; background: #0A1729;
+  transition: transform .3s var(--ease);
+}
+.dcard:hover .dcard__face { transform: scale(1.06) translateY(-2px); }
+.dcard__body { padding-block-start: 1.75rem; }
+
+/* ---------- 2. Plans: aligned rows, flag inside the card ---------- */
+.plans { gap: 1.25rem; padding-top: 1rem; }
+.plan { padding-block-start: 1.75rem; overflow: visible; }
+.plan__flag {
+  inset-block-start: -13px;
+  box-shadow: var(--sh-2);
+}
+.plan--featured { transform: none; }
+@media (min-width: 981px) {
+  .plan--featured { margin-block: -.5rem; padding-block: 2.25rem 2rem; }
+}
+.plan__head { min-height: 74px; }
+.plan__price { min-height: 46px; align-items: baseline; }
+.plan__per { min-height: 20px; }
+/* every column renders the same rows, so they line up across cards */
+.plan__feats li { align-items: center; min-height: 30px; }
+.plan__feats li.off { text-decoration: none; color: var(--text-3); opacity: .72; }
+.plan__feats li.off span:last-child { text-decoration: none; }
+.plan__seats {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-family: var(--font-mono); font-size: .62rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--text-3);
+  border: 1px solid var(--line-2); border-radius: 100px; padding: .28rem .6rem;
+  margin-bottom: .9rem;
+}
+[dir="rtl"] .plan__seats { letter-spacing: 0; font-family: var(--font-body); font-size: .7rem; }
+.plan__seats svg { width: 12px; height: 12px; }
+.plan__save {
+  display: inline-block; margin-inline-start: .5rem;
+  font-family: var(--font-mono); font-size: .62rem; font-weight: 600;
+  background: var(--green-050); color: var(--green);
+  border-radius: 5px; padding: .16rem .4rem; vertical-align: middle;
+}
+[dir="rtl"] .plan__save { font-family: var(--font-body); font-size: .7rem; }
+
+/* ---------- 3. Course hero: no dead column ---------- */
+.chero__in { align-items: stretch; }
+.chero__left { display: flex; flex-direction: column; }
+.chero__pad { margin-top: auto; padding-top: clamp(1.5rem, 3vw, 2.25rem); }
+.chero__by {
+  display: flex; align-items: center; gap: .8rem;
+  padding-top: 1.35rem; margin-top: 1.35rem; border-top: 1px solid var(--line);
+}
+.chero__by img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; flex: none; }
+.chero__by b { display: block; font-size: .92rem; color: var(--navy); font-weight: 640; }
+.chero__by small { font-size: .78rem; color: var(--text-3); }
+.chero__ses { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.1rem; }
+.chero__quick {
+  display: grid; gap: .55rem; margin-top: 1.35rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 620px) { .chero__quick { grid-template-columns: 1fr; } }
+.chero__quick li {
+  display: flex; align-items: flex-start; gap: .55rem;
+  font-size: .845rem; color: var(--text-2); line-height: 1.5;
+}
+.chero__quick svg { color: var(--green); margin-top: .18rem; width: 15px; height: 15px; }
+
+/* ---------- 4. Session types section ---------- */
+.ses-grid { display: grid; gap: clamp(.9rem, 2vw, 1.4rem); grid-template-columns: repeat(3, minmax(0,1fr)); }
+@media (max-width: 820px) { .ses-grid { grid-template-columns: 1fr; } }
+.ses-card { padding: clamp(1.15rem, 2.2vw, 1.6rem); display: flex; flex-direction: column; gap: .7rem; height: 100%; }
+.ses-card.is-off { opacity: .48; }
+.ses-card__top { display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
+.ses-card__ico { width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; }
+.ses-card__ico svg { width: 19px; height: 19px; }
+.ses-card--offline  .ses-card__ico { background: var(--violet-050); color: var(--violet); }
+.ses-card--online   .ses-card__ico { background: var(--red-050);    color: var(--red); }
+.ses-card--recorded .ses-card__ico { background: var(--bg-3);       color: var(--text-2); }
+.ses-card h4 { font-size: 1.02rem; }
+.ses-card p { font-size: .87rem; line-height: 1.6; }
+.ses-card__state {
+  font-family: var(--font-mono); font-size: .6rem; letter-spacing: .1em;
+  text-transform: uppercase; padding: .28rem .55rem; border-radius: 100px;
+}
+[dir="rtl"] .ses-card__state { letter-spacing: 0; font-family: var(--font-body); font-size: .68rem; }
+.ses-card__state.on  { background: var(--green-050); color: var(--green); }
+.ses-card__state.off { background: var(--bg-3); color: var(--text-3); }
+
+/* ---------- 5. Full height hero ---------- */
+.hero2 {
+  min-height: calc(100svh - var(--nav-h));
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+}
+@media (max-width: 940px) {
+  .hero2 { min-height: auto; padding-block: clamp(2.5rem, 8vw, 4rem) clamp(3rem, 9vw, 5rem); }
+}
+.hero2__scroll {
+  position: absolute; inset-block-end: 1.5rem; inset-inline-start: 50%;
+  transform: translateX(-50%); z-index: 3;
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  color: rgba(255,255,255,.5);
+  font-family: var(--font-mono); font-size: .6rem; letter-spacing: .16em; text-transform: uppercase;
+}
+[dir="rtl"] .hero2__scroll { letter-spacing: 0; font-family: var(--font-body); font-size: .68rem; transform: translateX(50%); }
+.hero2__scroll i {
+  width: 1px; height: 30px; background: linear-gradient(180deg, rgba(255,255,255,.5), transparent);
+  animation: scroll-hint 2s var(--ease-io) infinite;
+}
+@keyframes scroll-hint { 0%,100% { opacity: .25; transform: scaleY(.5); transform-origin: top; } 50% { opacity: 1; transform: scaleY(1); } }
+@media (max-height: 700px), (max-width: 940px) { .hero2__scroll { display: none; } }
+
+/* ---------- 6. Dark mode polish on the marketing shell ---------- */
+[data-theme="dark"] .chero { background: var(--bg-2); }
+[data-theme="dark"] .buy { box-shadow: var(--sh-3); }
+[data-theme="dark"] .plan--featured { border-color: var(--orange); }
+[data-theme="dark"] .mq::before { background: linear-gradient(90deg, var(--bg-2), transparent); }
+[data-theme="dark"] .mq::after  { background: linear-gradient(270deg, var(--bg-2), transparent); }
+[data-theme="dark"] .strip { background: var(--bg-2); }
+[data-theme="dark"] .section--ink { background: var(--ink-block); }
+[data-theme="dark"] .cta-round--ghost { color: var(--text); }
+[data-theme="dark"] .toast { color: var(--text); }
+[data-theme="dark"] .grad { background: var(--bg-3); }
+[data-theme="dark"] .btile__medal { background: var(--bg-3); }
+[data-theme="dark"] .fnl__bar { background: var(--bg-4); }
+[data-theme="dark"] .ue__i { background: var(--card-2); }
+
+/* ---------- 7. Guarantee row: icon can never balloon ---------- */
+.buy__note {
+  margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line);
+  font-size: .76rem; color: var(--text-3); line-height: 1.55;
+  display: flex; gap: .55rem; align-items: flex-start;
+}
+.buy__note svg { width: 15px; height: 15px; flex: none; margin-top: .1rem; color: var(--green); }
+
+/* ---------- 8. Support / legal pages ---------- */
+.legal { max-width: 760px; }
+.legal h2 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); margin-block: 2.25rem .8rem; }
+.legal h2:first-of-type { margin-top: 0; }
+.legal p { font-size: .95rem; line-height: 1.75; margin-bottom: 1rem; }
+.legal ul { display: grid; gap: .55rem; margin-bottom: 1.25rem; }
+.legal li { display: flex; gap: .65rem; font-size: .93rem; color: var(--text-2); line-height: 1.65; }
+.legal li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); flex: none; margin-top: .62rem; }
+.legal__meta {
+  font-family: var(--font-mono); font-size: .68rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--text-3); margin-bottom: 2rem;
+  padding-bottom: 1.25rem; border-bottom: 1px solid var(--line);
+}
+[dir="rtl"] .legal__meta { letter-spacing: 0; font-family: var(--font-body); font-size: .8rem; }
+.legal__toc { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 2.5rem; }
+
+/* help centre */
+.help-grid { display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0,1fr)); }
+@media (max-width: 900px) { .help-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 600px) { .help-grid { grid-template-columns: 1fr; } }
+.help-card { display: flex; flex-direction: column; gap: .6rem; height: 100%; }
+.help-card .ico-box { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: var(--orange-050); color: var(--orange-600); }
+[data-theme="dark"] .help-card .ico-box { color: var(--orange-400); }
+.help-card .ico-box svg { width: 19px; height: 19px; }
+.help-card p { font-size: .87rem; }
+.help-card ul { display: grid; gap: .4rem; margin-top: .3rem; }
+.help-card li a { font-size: .84rem; color: var(--text-2); display: inline-flex; align-items: center; gap: .4rem; }
+.help-card li a:hover { color: var(--orange); }
+.help-card li svg { width: 12px; height: 12px; }
+[dir="rtl"] .help-card li svg { transform: scaleX(-1); }
+
+/* ---------- 9. App shell: grid children must be allowed to shrink ---------- */
+.app > * { min-width: 0; }
+.side { min-width: 0; }
+.side > .card { min-width: 0; overflow: hidden; }
+.side__who { min-width: 0; }
+.side__who > span { min-width: 0; }
+.side__who b, .side__who small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+@media (max-width: 1000px) {
+  .side__nav { max-width: 100%; }
+  .pane, .pane__head, .cnsl-head { min-width: 0; }
+}

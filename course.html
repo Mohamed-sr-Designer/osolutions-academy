@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/css/pages.css">
 <link rel="stylesheet" href="assets/css/motion.css">
+<link rel="stylesheet" href="assets/css/fixes.css">
 </head>
 <body>
 
@@ -25,22 +26,27 @@
   <!-- HERO -->
   <section class="chero">
     <div class="shell shell--wide chero__in">
-      <div>
+      <div class="chero__left">
         <nav class="crumbs">
           <a href="index.html" data-i18n="nav.home"></a>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
           <a href="courses.html" data-i18n="nav.courses"></a>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
           <span data-c-cat></span>
         </nav>
         <div class="badge-row" data-c-badges></div>
-        <h1 data-c-title></h1>
+        <h1 data-c-title data-split></h1>
         <p class="lede" data-c-tagline></p>
         <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:1.4rem">
           <span class="rating" data-c-rating></span>
           <span style="font-size:.85rem;color:var(--text-3)" data-c-enrolled></span>
         </div>
-        <dl class="chero__meta" data-c-meta></dl>
+        <div class="chero__ses" data-c-ses></div>
+        <ul class="chero__quick" data-c-quick></ul>
+        <div class="chero__pad">
+          <dl class="chero__meta" data-c-meta></dl>
+          <div class="chero__by" data-c-by></div>
+        </div>
       </div>
 
       <aside>
@@ -58,6 +64,17 @@
         <p data-i18n="crs.learnP"></p>
       </div>
       <ul class="outcomes rv" data-c-outcomes></ul>
+    </div>
+  </section>
+
+  <!-- SESSION TYPES -->
+  <section class="section section--tight">
+    <div class="shell shell--wide">
+      <div class="sec-head rv">
+        <span class="sec-head__tag" data-i18n="crs.format"></span>
+        <h2 style="font-size:clamp(1.5rem,2.8vw,2.2rem)" data-i18n="ses.title"></h2>
+      </div>
+      <div class="ses-grid" data-c-sessions data-stagger></div>
     </div>
   </section>
 

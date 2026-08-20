@@ -251,6 +251,8 @@
     d.querySelectorAll('[data-demo-chip]').forEach(e => {
       e.innerHTML = A.icon('bolt') + A.esc(T.pick(C.demo));
     });
+    const _h1 = d.querySelector('[data-page-h1]'); if (_h1) _h1.textContent = T.t('nav.console');
+
 
     /* sidebar */
     html('[data-who]',

@@ -38,6 +38,8 @@
   function render() {
     const T = w.I18n, A = w.App, L = w.LMS, K = L.TEACH;
     const me = L.instructor(K.who);
+    const _h1 = d.querySelector('[data-page-h1]'); if (_h1) _h1.textContent = T.t('ins.title');
+
 
     /* sidebar */
     d.querySelector('[data-who]').innerHTML =

@@ -58,8 +58,7 @@
            T.pick({ en: 'Verifiable certificate with a credential ID', ar: 'شهادة موثّقة برقم تحقّق' })
           ].map(x => '<li>' + A.icon('check') + '<span>' + A.esc(x) + '</span></li>').join('') +
         '</ul>' +
-        '<p style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.76rem;color:var(--text-3);display:flex;gap:.5rem;align-items:flex-start">' +
-          A.icon('refresh') + '<span>' + A.esc(T.t('cro.guarantee')) + '</span></p>' +
+        '<p class="buy__note">' + A.icon('check') + '<span>' + A.esc(T.t('cro.guarantee')) + '</span></p>' +
       '</div>';
   }
 
@@ -81,6 +80,35 @@
 
     d.querySelector('[data-c-meta]').innerHTML = meta(T).map(m =>
       '<div><dt>' + A.esc(T.t(m.k)) + '</dt><dd>' + A.esc(m.v) + '</dd></div>').join('');
+
+    /* session chips + quick wins + instructor row — these fill the hero column
+       so the sticky buy card never leaves a dead gap beside it */
+    d.querySelector('[data-c-ses]').innerHTML = A.sessionBadges(c.sessions, { lg: true });
+
+    d.querySelector('[data-c-quick]').innerHTML = c.outcomes.slice(0, 4).map(o =>
+      '<li>' + A.icon('check') + '<span>' + A.esc(T.pick(o)) + '</span></li>').join('');
+
+    d.querySelector('[data-c-by]').innerHTML =
+      '<img src="' + inst.img + '" alt="" loading="lazy">' +
+      '<span><b>' + A.esc(T.pick(inst.name)) + '</b>' +
+      '<small>' + A.esc(T.pick(inst.role)) + '</small></span>' +
+      '<span class="rating" style="margin-inline-start:auto">' + A.stars(inst.stats.rating) +
+      '<b>' + inst.stats.rating.toFixed(1) + '</b></span>';
+
+    /* session type cards */
+    d.querySelector('[data-c-sessions]').innerHTML = A.SESSION_ORDER.map(id => {
+      const s = A.SESSION[id];
+      const on = c.sessions.indexOf(id) > -1;
+      return '<div class="card ses-card ses-card--' + id + (on ? '' : ' is-off') + '" data-spot>' +
+        '<div class="ses-card__top">' +
+          '<span class="ses-card__ico">' + A.icon(s.i) + '</span>' +
+          '<span class="ses-card__state ' + (on ? 'on' : 'off') + '">' +
+            A.esc(on ? T.pick({ en: 'Available', ar: 'متاح' }) : T.pick({ en: 'Not on this course', ar: 'مش في الكورس ده' })) +
+          '</span>' +
+        '</div>' +
+        '<h4>' + A.esc(T.t(s.k)) + '</h4>' +
+        '<p>' + A.esc(T.t(s.d)) + '</p></div>';
+    }).join('');
 
     /* buy card */
     const buy = d.querySelector('[data-c-buy]');
@@ -179,11 +207,23 @@
     d.querySelector('[data-c-plans]').innerHTML = c.plans.map(p => {
       const flag = p.badge === 'popular' ? '<span class="badge badge--solid badge--lg plan__flag">' + A.esc(T.t('crs.popular')) + '</span>'
                  : p.badge === 'value'   ? '<span class="badge badge--ink badge--lg plan__flag">' + A.esc(T.t('crs.bestValue')) + '</span>' : '';
-      return '<div class="card plan' + (p.badge === 'popular' ? ' plan--featured' : '') + ' rv">' + flag +
-        '<h3>' + A.esc(T.pick(p.name)) + '</h3>' +
-        '<p class="plan__note">' + A.esc(T.pick(p.note)) + '</p>' +
-        '<div class="plan__price"><b>' + T.money(p.price) + '</b>' + (p.was ? '<s>' + T.money(p.was) + '</s>' : '') + '</div>' +
-        '<p class="plan__per">' + A.esc(p.id === 'duo' ? T.pick({ en: 'for two seats', ar: 'لمقعدين' }) : T.t('crs.perSeat')) + '</p>' +
+      const save = p.was ? Math.round((1 - p.price / p.was) * 100) : 0;
+      const perSeat = Math.round(p.price / p.seats);
+      return '<div class="card plan' + (p.badge === 'popular' ? ' plan--featured' : '') + ' rv" data-spot>' + flag +
+        '<div class="plan__head">' +
+          '<span class="plan__seats">' + A.icon('users') +
+            (p.seats > 1
+              ? T.num(p.seats) + ' ' + A.esc(T.pick({ en: 'seats', ar: 'مقاعد' }))
+              : T.num(1) + ' ' + A.esc(T.pick({ en: 'seat', ar: 'مقعد' }))) + '</span>' +
+          '<h3>' + A.esc(T.pick(p.name)) + '</h3>' +
+          '<p class="plan__note">' + A.esc(T.pick(p.note)) + '</p>' +
+        '</div>' +
+        '<div class="plan__price"><b>' + T.money(p.price) + '</b>' +
+          (p.was ? '<s>' + T.money(p.was) + '</s><span class="plan__save">−' + save + '%</span>' : '') + '</div>' +
+        '<p class="plan__per">' + A.esc(
+          p.seats > 1
+            ? T.num(perSeat) + ' ' + T.t('g.egp') + ' ' + T.t('crs.perSeat')
+            : T.t('crs.perSeat')) + '</p>' +
         '<a class="btn ' + (p.badge === 'popular' ? 'btn--primary' : 'btn--ghost') + ' btn--block" href="checkout.html?id=' + c.id + '&plan=' + p.id + '">' +
           A.esc(T.t('crs.choose')) + '</a>' +
         '<div class="plan__feats"><span class="plan__lbl">' + A.esc(T.t('crs.includes')) + '</span>' +

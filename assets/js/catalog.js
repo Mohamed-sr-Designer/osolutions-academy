@@ -2,7 +2,7 @@
 (function (w, d) {
   'use strict';
 
-  const filter = { q: '', cat: 'all', level: 'all', sort: 'popular' };
+  const filter = { q: '', cat: 'all', level: 'all', ses: 'all', sort: 'popular' };
 
   function haystack(c, T) {
     return [
@@ -16,6 +16,7 @@
     let list = w.LMS.COURSES.slice();
     if (filter.cat !== 'all') list = list.filter(c => c.cat === filter.cat);
     if (filter.level !== 'all') list = list.filter(c => c.level === filter.level);
+    if (filter.ses !== 'all') list = list.filter(c => (c.sessions || []).indexOf(filter.ses) > -1);
     if (filter.q) {
       const q = filter.q.toLowerCase().trim();
       list = list.filter(c => haystack(c, T).indexOf(q) > -1);
@@ -64,6 +65,13 @@
         '<option value="' + l + '">' + T.t('lvl.' + l) + '</option>').join('');
     lv.value = filter.level;
 
+    const se = d.querySelector('[data-ses]');
+    se.innerHTML =
+      '<option value="all">' + T.t('ses.filter') + ': ' + T.t('cat.all') + '</option>' +
+      w.App.SESSION_ORDER.map(id =>
+        '<option value="' + id + '">' + T.t(w.App.SESSION[id].k) + '</option>').join('');
+    se.value = filter.ses;
+
     const so = d.querySelector('[data-sort]');
     so.innerHTML = [
       ['popular', 'cat.sortPopular'], ['new', 'cat.sortNew'], ['rating', 'cat.sortRating'],
@@ -83,9 +91,10 @@
       });
     }
     d.querySelector('[data-level]').onchange = e => { filter.level = e.target.value; paint(); };
+    d.querySelector('[data-ses]').onchange   = e => { filter.ses   = e.target.value; paint(); };
     d.querySelector('[data-sort]').onchange  = e => { filter.sort  = e.target.value; paint(); };
     d.querySelector('[data-reset]').onclick = () => {
-      filter.q = ''; filter.cat = 'all'; filter.level = 'all';
+      filter.q = ''; filter.cat = 'all'; filter.level = 'all'; filter.ses = 'all';
       d.querySelector('[data-search]').value = '';
       selects(); chips(); paint();
     };
@@ -93,6 +102,8 @@
 
   function render() {
     /* deep link: courses.html?cat=motion */
+    const sq = w.App.param('q');
+    if (sq) { filter.q = sq; const si = d.querySelector('[data-search]'); if (si) si.value = sq; }
     const c = w.App.param('cat');
     if (c && w.LMS.CATS.some(x => x.id === c)) filter.cat = c;
     selects(); chips(); bind(); paint();

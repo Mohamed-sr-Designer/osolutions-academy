@@ -200,6 +200,7 @@
     html('[data-h-cta]', '<span>' + A.esc(T.pick(C.cta)) + '</span>' + arrow);
     html('[data-h-rev]', A.stars(4.8) +
       '<small>' + A.esc(T.pick(C.from)) + ' <b>' + C.revN + '</b> ' + A.esc(T.pick(C.rev)) + '</small>');
+    set('[data-h-scroll]', T.pick({ en: 'Scroll', ar: 'انزل' }));
     html('[data-h-logos]', C.logos.concat(C.logos).map(x => '<span>' + A.esc(x) + '</span>').join(''));
 
     /* 2 · impact + showcase */
@@ -243,6 +244,7 @@
     html('[data-h-crsAll]', '<span>' + A.esc(T.pick(C.crsAll)) + '</span>' + arrow);
     html('[data-h-courses]', L.COURSES.map(c => {
       const live = c.badges.indexOf('live') > -1;
+      const ins = L.instructor(c.instructor);
       return '<a class="dcard" data-spot href="course.html?id=' + c.id + '">' +
         '<div class="dcard__art">' +
           '<img src="' + c.cover + '" alt="" loading="lazy" width="1600" height="1000">' +
@@ -251,6 +253,7 @@
             '<span class="dcard__live">' + (live ? '<i></i>' : '') +
               A.esc(T.pick(live ? C.liveCourse : C.selfPaced)) + '</span>' +
           '</div>' +
+          '<img class="dcard__face" src="' + ins.img + '" alt="" loading="lazy">' +
         '</div>' +
         '<div class="dcard__body">' +
           '<span class="dcard__cat">' + A.esc(T.pick(c.catName)) + '</span>' +

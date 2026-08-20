@@ -2,7 +2,7 @@
    Osolutions Academy — service worker
    Stale-while-revalidate for the shell, cache-first for images and fonts.
    ========================================================================== */
-const VERSION = 'oso-academy-v1';
+const VERSION = 'oso-academy-v2';
 const SHELL = VERSION + '-shell';
 const MEDIA = VERSION + '-media';
 
@@ -65,14 +65,34 @@ self.addEventListener('fetch', e => {
     return;
   }
 
-  /* documents, css and js: serve cache, refresh in the background */
+  /* HTML documents: network first, so a deploy is never masked by the cache.
+     The cached copy is only used when the network is unavailable. */
+  const wantsHtml = req.mode === 'navigate' ||
+    (req.headers.get('accept') || '').indexOf('text/html') > -1;
+
+  if (wantsHtml) {
+    e.respondWith(
+      fetch(req)
+        .then(res => {
+          if (res && res.status === 200) {
+            const copy = res.clone();
+            caches.open(SHELL).then(c => c.put(req, copy));
+          }
+          return res;
+        })
+        .catch(() => caches.match(req).then(hit => hit || caches.match('./404.html')))
+    );
+    return;
+  }
+
+  /* css and js: serve cache, refresh in the background */
   e.respondWith(
     caches.open(SHELL).then(cache =>
       cache.match(req).then(hit => {
         const net = fetch(req).then(res => {
           if (res && res.status === 200) cache.put(req, res.clone());
           return res;
-        }).catch(() => hit || caches.match('./404.html'));
+        }).catch(() => hit);
         return hit || net;
       })
     )
